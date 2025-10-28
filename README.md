@@ -113,11 +113,3 @@ WhatsApp authentication data is stored in the `wa-auth/` directory. This include
 Make sure to properly handle these authentication files as they contain sensitive information.
 
 **Note**: If you want to reconnect to a different WhatsApp number, you can safely delete all contents of the `wa-auth/` directory. The next time you start the application, it will generate a new QR code for authentication with a different number.
-
-## License
-
-[Add your chosen license]
-
-## Author
-
-[borgeskauan](https://github.com/borgeskauan)
