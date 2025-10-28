@@ -1,0 +1,10 @@
+# Don't send unnecessary files to the Docker build context
+node_modules
+auth
+.git
+.gitignore
+Dockerfile
+.dockerignore
+npm-debug.log*
+.env
+*.md
