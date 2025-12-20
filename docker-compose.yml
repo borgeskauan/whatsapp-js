@@ -16,10 +16,13 @@ services:
       HOST: 0.0.0.0
       WEBHOOK_URL: "http://host.docker.internal:3001/whatsapp" # Optional: forward inbound messages to a webhook you control
     volumes:
-      - ./wa-auth:/app/auth   # persist WhatsApp session so you don't re-scan QR
+      - wa-auth:/app/auth   # persist WhatsApp session so you don't re-scan QR
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://localhost:3000/status"]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 10s
+
+volumes:
+  wa-auth:
