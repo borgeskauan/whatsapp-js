@@ -54,7 +54,6 @@ The server exposes the following endpoints on port 3000 by default:
 ```
 ├── src/
 │   └── server.js        # Main server implementation
-├── wa-auth/             # WhatsApp authentication files
 ├── docker-compose.yml   # Docker composition configuration
 ├── Dockerfile          # Docker container configuration
 └── sample-commands.sh  # Example usage commands
@@ -64,6 +63,16 @@ The server exposes the following endpoints on port 3000 by default:
 
 - Node.js
 - Docker (optional, for containerized deployment)
+
+## Environment Variables
+
+- `WEBHOOK_URL` (optional) - Webhook URL to forward incoming messages. When set, all received messages will be automatically forwarded to this URL via HTTP POST with JSON payload containing the message details.
+
+Example:
+```bash
+export WEBHOOK_URL=https://your-webhook-service.com/messages
+npm start
+```
 
 ## Getting Started
 
@@ -104,7 +113,7 @@ docker-compose up -d
 
 ## Authentication
 
-WhatsApp authentication data is stored in the `wa-auth/` directory. This includes:
+WhatsApp authentication data is stored in the `wa-auth/` volume. This includes:
 - Session data
 - Device information
 - Pre-keys for encryption
@@ -112,4 +121,4 @@ WhatsApp authentication data is stored in the `wa-auth/` directory. This include
 
 Make sure to properly handle these authentication files as they contain sensitive information.
 
-**Note**: If you want to reconnect to a different WhatsApp number, you can safely delete all contents of the `wa-auth/` directory. The next time you start the application, it will generate a new QR code for authentication with a different number.
+**Note**: If you want to reconnect to a different WhatsApp number, you can safely delete the `wa-auth/` volume. The next time you start the application, it will generate a new QR code for authentication with a different number.
